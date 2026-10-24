@@ -1,6 +1,8 @@
 package characters;
 
 public class Character {
+	private int xp;
+	private int lv;
 	private int df;
 	private int hp;
 	private int max_hp;
@@ -11,5 +13,7 @@ public class Character {
 		max_df = _b;
 		hp = max_hp;
 		df = max_df;
+		xp = 0;
+		lv = 0;
 	}
 }

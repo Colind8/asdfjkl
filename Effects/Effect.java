@@ -1,17 +1,20 @@
 package effects;
+import characters.Character;
 
 abstract class Effect {
 	private String name;
 	private String desc;
 	private int turn_length;
+	protected Character character;
 
-	public Effect (String name, String desc, int turn_length) {
+	public Effect (String name, String desc, int turn_length, Character character) {
 		this.name = name;
 		this.desc = desc;
 		this.turn_length = turn_length;
+		this.character = character;
 	}
 
-	public abstract void activate_effect(Character character);
+	public abstract void activate_effect();
 
 	public String get_name() {
 		return name;

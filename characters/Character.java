@@ -16,4 +16,20 @@ public class Character {
 		xp = 0;
 		lv = 0;
 	}
+
+	public int get_max_hp() {
+		return max_hp;
+	}
+
+	public int get_max_df() {
+		return max_df;
+	}
+
+	public int get_hp() {
+		return hp;
+	}
+
+	public void change_hp(int amount) {
+		hp += amount;
+	}
 }

@@ -1,5 +1,5 @@
-package Items;
-import Effects.*;
+package items;
+import effects.*;
 
 public class Ingredient extends Item {
 	private Effect effect = new Effect("Heal","Slightly heals",1);

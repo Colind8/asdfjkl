@@ -1,4 +1,8 @@
 
+/**
+ * 
+ * Player - holds critical player info
+ */
 public class Player {
 	private int xp;
 	private int lv;

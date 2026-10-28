@@ -9,12 +9,11 @@ import java.util.ArrayList;
 public class Character {
 	private String name;
 	private String desc;
-	private int xp;
-	private int lv;
-	private int df;
-	private int hp;
+	private int xp, lv;
+	private int hp, df;
 	private int max_hp;
 	private int max_df;
+	private int dmg, dex;
 	private ArrayList<Effect> effects = new ArrayList<Effect>();
 
 	/**
@@ -23,14 +22,17 @@ public class Character {
 	 * @param desc The description of the character
 	 * @param _a The HP the character starts with
 	 * @param _b the DF the character starts with
+	 * @param xp the XP the character starts with
+	 * @param lv the LV the character starts with
 	 */
-	public Character(String name, String desc, int _a, int _b) {
+	public Character(String name, String desc, int _a, int _b, int xp, int lv) {
 		max_hp = _a;
 		max_df = _b;
 		hp = max_hp;
 		df = max_df;
-		xp = 0;
-		lv = 0;
+		this.xp = xp;
+		this.lv = lv;
+		set_dexterity(20);
 	}
 
 	/**
@@ -82,6 +84,22 @@ public class Character {
 	 */
 	public int get_df() {
 		return df;
+	}
+
+	/**
+	 * Set the damage using a formula (base )
+	 * @param base Amount of damage when at level zero
+	 */
+	public void set_damage(int base) {
+		dmg = (int) Math.round(base + (Math.pow(lv,1.15)));
+	}
+
+	/**
+	 * Set dexterity directly
+	 * @param dex max 20
+	 */
+	public void set_dexterity(int dex) {
+		this.dex = dex;
 	}
 
 	/**

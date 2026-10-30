@@ -35,6 +35,10 @@ public class Character {
 		set_dexterity(20);
 	}
 
+	public String get_name() {
+		return name;
+	}
+
 	/**
 	 * This determines the maximum amount of health a character can have
 	 * @return max_hp
@@ -87,6 +91,22 @@ public class Character {
 	}
 
 	/**
+	 * AKA Damage. The amount of damage the character deals to enemies.
+	 * @return dmg
+	 */
+	public int get_dmg() {
+		return dmg;
+	}
+
+	/**
+	 * AKA Dexterity. The chance out of 20 that a character's attack will hit.
+	 * @return dex
+	 */
+	public int get_dex() {
+		return dex;
+	}
+
+	/**
 	 * Set the damage using a formula (base )
 	 * @param base Amount of damage when at level zero
 	 */
@@ -95,7 +115,7 @@ public class Character {
 	}
 
 	/**
-	 * Set dexterity directly
+	 * Set dexterity directly. Dexterity is the chance out of 20 that an attack hits.
 	 * @param dex max 20
 	 */
 	public void set_dexterity(int dex) {

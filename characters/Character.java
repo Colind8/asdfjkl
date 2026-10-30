@@ -26,6 +26,8 @@ public class Character {
 	 * @param lv the LV the character starts with
 	 */
 	public Character(String name, String desc, int _a, int _b, int xp, int lv) {
+		this.name = name;
+		this.desc = desc;
 		max_hp = _a;
 		max_df = _b;
 		hp = max_hp;
@@ -35,6 +37,10 @@ public class Character {
 		set_dexterity(20);
 	}
 
+	/**
+	 * get the character name
+	 * @return name
+	 */
 	public String get_name() {
 		return name;
 	}

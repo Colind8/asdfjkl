@@ -11,14 +11,56 @@ public class Battle {
 	private int turns;
 	private ArrayList<Enemy> enemies = new ArrayList<Enemy>(); 
 	private PlayerCharacter player;
+	private Player data;
+	private Menu menu;
 
 	/**
-	 * Constructs the Battle Class
+	 * Construct the battle class
+	 * @param data player data for player battle object
 	 */
-	public Battle(Player data) {
+	public Battle(Player data, Menu menu) {
 		turn_index = 0;
 		turns = 0;
-		player = new PlayerCharacter(data.get_name(), "It's you!", )
+		player = new PlayerCharacter(data.get_name(), "It's you!", data.get_max_hp(), data.get_df(), data.get_xp(), data.get_lv());
+		this.menu = menu;
+		this.data = data;
+	}
+
+	/** 
+	 * Returns the amount of turns that have passed.
+	 * @return turns
+	 */
+	public int get_turn_count() {
+		return turns;
+	}
+
+	/**
+	 * Get the amount of enemies in the battle
+	 * @return enemy count
+	 */
+	public int get_enemy_count() {
+		return enemies.size();
+	}
+
+	/**
+	 * Returns the enemy at the index
+	 * @param index index of enemy
+	 * @return enemy object
+	 */
+	public Enemy get_enemy(int index) {
+		return enemies.get(index);
+	}
+
+	/**
+	 * Returns data object
+	 * @return data
+	 */
+	public Player get_data() {
+		return data;
+	}
+
+	public String get_player_info() {
+		return player.get_name() + " --- " + player.get_hp() + "/" + player.get_max_hp() + "hp -" + player.get_xp()
 	}
 
 	/** 
@@ -61,8 +103,11 @@ public class Battle {
 		}
 	}
 
+	/**
+	 * Begins the player's turn
+	 */
 	public void start_player_turn() {
-		
+		menu.battle_player_menu(this);
 	}
 
 	/** Ends the battle */

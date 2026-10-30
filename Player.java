@@ -27,6 +27,10 @@ public class Player {
 		return xp;
 	}
 
+	public int get_max_xp() {
+		return 100 + (100 * lv);
+	}
+
 	public int get_lv() {
 		return lv;
 	}
@@ -37,5 +41,9 @@ public class Player {
 
 	public int get_df() {
 		return ((lv * 2));
+	}
+
+	public Inventory get_inventory() {
+		return inventory;
 	}
 }

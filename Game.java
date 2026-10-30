@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Game {
 	public static void main(String args[]) {
 		Scanner scnr = new Scanner(System.in);
+		Menu menu = new Menu();
 
 		System.out.println("Welcome to The Alchemist!");
 		String input = "";
@@ -17,6 +18,9 @@ public class Game {
 		data.inventory.add_item(new Item("Daisies", "They have a healing aura to them", 3));
 		data.inventory.add_item(new Item("Poison Ivy", "It has an anti-healing aura to it", 1));
 
-		Battle battle = new Battle(data);
+		Battle battle = new Battle(data, menu);
+		battle.add_enemy(new Slime("Slime", "It's sticky", 15, 0, 10, 1));
+		menu.battle_overview(battle);
+		battle.start_battle();
 	}
 }

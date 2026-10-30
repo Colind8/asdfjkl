@@ -10,4 +10,20 @@ public class Item {
 		this.desc = desc;
 		this.amount = amount;
 	}
+
+	public String get_name() {
+		return name;
+	}
+
+	public String get_desc() {
+		return desc;
+	}
+
+	public int get_amount() {
+		return amount;
+	}
+
+	public String get_item_info_string() {
+		return get_name() + "[" + get_amount() + "]: " + get_desc();
+	}
 }

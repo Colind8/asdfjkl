@@ -39,6 +39,10 @@ public class Character {
 		return name;
 	}
 
+	public String get_desc() {
+		return desc;
+	}
+
 	/**
 	 * This determines the maximum amount of health a character can have
 	 * @return max_hp

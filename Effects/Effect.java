@@ -27,7 +27,7 @@ public abstract class Effect {
 	/**
 	 * Runs whenever it's time to activate the effect.
 	 */
-	public abstract void activate_effect();
+	public abstract void activate_effect(Character character);
 
 	/**
 	 * The name of the effect.

@@ -18,12 +18,17 @@ public class Inventory {
 	}
 
 	/**
-	 * Print every item in the inventory
+	 * Returns a list of every item as a string
 	 */
-	public void print_inventory() {
-		for (int i = 0; i < inventory.size(); i++) {
-			System.out.println(i + ". " + get_item(i).get_item_info_string());
+	public String print_inventory() {
+		String str = "";
+		if (inventory.size() == 0) {
+			return "[ inventory is empty ]";
 		}
+		for (int i = 0; i < inventory.size(); i++) {
+			str += i + ". " + get_item(i).get_item_info_string() + "\n";
+		}
+		return str;
 	}
 
 	/**
@@ -72,5 +77,13 @@ public class Inventory {
 		if (get_item(index).get_amount() <= 0) {
 			remove_item(index);
 		} 
+	}
+
+	/**
+	 * Returns the amount of items in the inventory
+	 * @return size
+	 */
+	public int get_size() {
+		return inventory.size();
 	}
 }

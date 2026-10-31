@@ -55,7 +55,7 @@ public class Brew {
 	 * @param index of the ingredient
 	 * @return Effect
 	 */
-	public Effect get_effect(int index) {
+	public Effect get_ingredient(int index) {
 		return ingredients.get(index).get_effect();
 	}
 
@@ -64,5 +64,39 @@ public class Brew {
 	 */
 	public int get_ingredients_size() {
 		return ingredients.size();
+	}
+
+	/**
+	 * Returns a single-line string of all the ingredients
+	 * @return String
+	 */
+	public String get_ingredients_info() {
+		String str = "Ingredients added: ";
+		if (get_ingredients_size() == 0) {
+			return "[No ingredients added yet]";
+		}
+		for (int i = 0; i < get_ingredients_size(); i++) {
+			str += get_ingredient(i).get_name();
+			if (i != get_ingredients_size() - 1) {
+				str += ", ";
+			}
+		}
+		return str;
+	}
+
+	/**
+	 * Returns a multi-line list of all the ingredients
+	 * @return String
+	 */
+	public String get_ingredients_list() {
+		String str = "Ingredients: ";
+		if (get_ingredients_size() == 0) {
+			return "[No ingredients added yet]";
+		}
+		for (int i = 0; i < get_ingredients_size(); i++) {
+			str += i + ". " + get_ingredient(i).get_name();
+			str += "\n";
+		}
+		return str;
 	}
 }

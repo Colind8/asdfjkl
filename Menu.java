@@ -39,7 +39,7 @@ public class Menu {
 			input = scnr.nextLine();
 			switch (input) {
 				case "1":
-					battle_brew_menu(battle);
+					battle.begin_brew();
 					valid = true;
 					break;
 				case "2":
@@ -53,23 +53,48 @@ public class Menu {
 	/**
 	 * Displays the brewing menu
 	 * @param battle
+	 * @param potion
 	 */
-	public void battle_brew_menu(Battle battle) {
+	public void battle_brew_menu(Battle battle, Brew potion) {
 		boolean valid = false;
-		Brew potion = new Brew(battle.get_data().get_inventory());
-		System.out.println("1. Add ingredient\n2. Remove Ingredient\n3. Finish Potion\n4. Cancel");
 		String input = "";
 		while(valid == false) {
+			System.out.println(potion.get_ingredients_info());
+			System.out.println("1. Add ingredient\n2. Remove Ingredient\n3. Finish Potion\n4. Cancel");
 			input = scnr.nextLine();
 			switch (input) {
 				case "1":
-					battle_brew_menu(battle);
+					battle_brew_add(battle, potion);
+					valid = true;
 					break;
 				case "2":
-					battle_check_menu(battle);
+					break;
+				case "3":
+
+					break;
+				case "4":
+					battle_player_menu(battle);
+					valid = true;
 					break;
 			}
 		}
+	}
+
+	public void battle_brew_add(Battle battle, Brew potion) {
+		int input = -1;
+		boolean valid = false;
+		while(valid == false) {
+			System.out.println(battle.get_data().get_inventory().print_inventory());
+			System.out.println("Enter the id of the item you want to add. Type '-1' to cancel.");
+			input = scnr.nextInt();
+			if ((input >= 0) && (input < battle.get_data().get_inventory().get_size())) {
+				potion.add_ingredient(input);
+				valid = true;
+			} else if (input == -1) {
+				valid = true;
+			}
+		}
+		battle_brew_menu(battle, potion);
 	}
 
 	public void battle_check_menu(Battle battle) {

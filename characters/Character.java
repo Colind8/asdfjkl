@@ -176,4 +176,19 @@ public class Character {
 			}
 		}
 	}
+
+	/**
+	 * Activates all effects at once
+	 */
+	public void run_effects() {
+		for (int i = 0; i < effects.size(); i++) {
+			effects.get(i).activate_effect(this);
+		}
+		for (int i = 0; i < effects.size(); i++) {
+			if (effects.get(i).get_turn_length() <= 0) {
+				effects.remove(i);
+				i = 0;
+			}
+		}
+	}
 }

@@ -74,7 +74,7 @@ public class Battle {
 	 * Ends a turn
 	 */
 	public void end_turn() {
-		if (is_all_enmies_dead()) {
+		if (is_all_enemies_dead()) {
 			end_battle();
 		}
 		if (turn_index > enemies.size() + 1) {
@@ -110,6 +110,11 @@ public class Battle {
 		menu.battle_player_menu(this);
 	}
 
+	public void begin_brew() {
+		Brew potion = new Brew(get_data().get_inventory());
+		menu.battle_brew_menu(this, potion);
+	}
+
 	/** Ends the battle */
 	public void end_battle() {
 
@@ -128,7 +133,7 @@ public class Battle {
 	 * Returns true if all enemies are dead.
 	 * @return boolean
 	 */
-	public boolean is_all_enmies_dead() {
+	public boolean is_all_enemies_dead() {
 		boolean check = true;
 		for (int i = 0; i < enemies.size(); i++) {
 			if (enemies.get(i).get_hp() > 0) {

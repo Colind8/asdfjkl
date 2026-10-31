@@ -28,5 +28,7 @@ public class Game {
 		battle.add_enemy(new Slime("Slime", "It's sticky", 15, 0, 10, 1));
 		menu.battle_overview(battle);
 		battle.start_battle();
+
+		scnr.close();
 	}
 }

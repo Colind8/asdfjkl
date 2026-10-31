@@ -3,7 +3,15 @@ import effects.*;
 import items.*;
 import java.util.Scanner;
 
+/**
+ * 
+ * The Main class
+ */
 public class Game {
+	/**
+	 * The main method
+	 * @param args unused
+	 */
 	public static void main(String args[]) {
 		Scanner scnr = new Scanner(System.in);
 		Menu menu = new Menu();
@@ -14,13 +22,13 @@ public class Game {
 		input = scnr.nextLine();
 
 		Player data = new Player(input);
-		data.inventory.add_item(new Item("Roses", "Offer a lovely helping of thorns", 10, 
+		data.get_inventory().add_item(new Item("Roses", "Offer a lovely helping of thorns", 10, 
 		new HealingEffect("Instant Damage", "damaged", 1, -3)
 		));
-		data.inventory.add_item(new Item("Daisies", "They have a healing aura to them", 3, 
+		data.get_inventory().add_item(new Item("Daisies", "They have a healing aura to them", 3, 
 		new HealingEffect("Healing", "healed", 2, 3)
 		));
-		data.inventory.add_item(new Item("Poison Ivy", "It has an anti-healing aura to it", 1, 
+		data.get_inventory().add_item(new Item("Poison Ivy", "It has an anti-healing aura to it", 1, 
 		new HealingEffect("Poison", "poisoned", 5, -1)
 		));
 

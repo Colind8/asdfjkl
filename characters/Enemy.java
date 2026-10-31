@@ -32,6 +32,7 @@ public abstract class Enemy extends Character {
 
 	/**
 	 * To be implemented: the unique attack
+	 * @param character character to apply attack to
 	 */
 	public abstract void attack(Character character);
 }

@@ -7,6 +7,9 @@ import java.util.Scanner;
 public class Menu {
 	Scanner scnr = new Scanner(System.in);
 
+	/**
+	 * Constructor for menu
+	 */
 	public Menu() {
 
 	}
@@ -52,8 +55,8 @@ public class Menu {
 
 	/**
 	 * Displays the brewing menu
-	 * @param battle
-	 * @param potion
+	 * @param battle battle object
+	 * @param potion potion object
 	 */
 	public void battle_brew_menu(Battle battle, Brew potion) {
 		boolean valid = false;
@@ -83,8 +86,8 @@ public class Menu {
 
 	/**
 	 * Menu for adding an ingredient to the potion
-	 * @param battle
-	 * @param potion
+	* @param battle battle object
+	* @param potion potion object
 	 */
 	public void battle_brew_add(Battle battle, Brew potion) {
 		int input = -1;
@@ -106,8 +109,8 @@ public class Menu {
 
 	/**
 	 * Menu for choosing who to apply the potion to
-	 * @param battle
-	 * @param potion
+	* @param battle battle object
+	* @param potion potion object
 	 */
 	public void battle_brew_finish(Battle battle, Brew potion) {
 		int input = -1;
@@ -130,7 +133,7 @@ public class Menu {
 
 	/**
 	 * Show the check menu
-	 * @param battle
+	 * @param battle battle object
 	*/
 	public void battle_check_menu(Battle battle) {
 		int input = -1;

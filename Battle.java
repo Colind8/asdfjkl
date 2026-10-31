@@ -17,6 +17,7 @@ public class Battle {
 	/**
 	 * Construct the battle class
 	 * @param data player data for player battle object
+	 * @param menu the menu object
 	 */
 	public Battle(Player data, Menu menu) {
 		turn_index = 0;
@@ -51,6 +52,10 @@ public class Battle {
 		return enemies.get(index);
 	}
 
+	/**
+	 * Return the player object
+	 * @return player
+	 */
 	public PlayerCharacter get_player() {
 		return player;
 	}
@@ -63,12 +68,17 @@ public class Battle {
 		return data;
 	}
 
+	/**
+	 * Return player info string
+	 * @return string
+	 */
 	public String get_player_info() {
 		return player.get_name() + " --- " + player.get_hp() + "/" + player.get_max_hp() + "hp";
 	}
 
 	/** 
 	 * Adds an enemy to the battle.
+	 * @param enemy the enemy to add to battle
 	 */
 	public void add_enemy(Enemy enemy) {
 		enemies.add(enemy);
@@ -78,7 +88,6 @@ public class Battle {
 	 * Ends a turn
 	 */
 	public void end_turn() {
-		System.out.println("turn_index: " + turn_index);
 		if (is_all_enemies_dead()) {
 			end_battle();
 		} else if (player.get_hp() <= 0) {
@@ -184,7 +193,7 @@ public class Battle {
 
 	/**
 	 * Returns enemy statistics
-	 * @param index
+	 * @param index index of the enemy
 	 * @return string
 	 */
 	public String get_enemy_status(int index) {

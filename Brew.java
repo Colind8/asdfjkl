@@ -61,7 +61,7 @@ public class Brew {
 
 	/**
 	 * Returns the ingredient at the index' name
-	 * @param index
+	 * @param index of the ingredient
 	 * @return item name
 	 */
 	public String get_ingredient_name(int index) {
@@ -70,6 +70,7 @@ public class Brew {
 
 	/**
 	 * Returns the size of the ingredients list
+	 * @return int
 	 */
 	public int get_ingredients_size() {
 		return ingredients.size();
@@ -111,7 +112,7 @@ public class Brew {
 
 	/**
 	 * Add all the effects of the potion to the character
-	 * @param character
+	 * @param character character object
 	 */
 	public void apply(Character character) {
 		for (int i = 0; i < ingredients.size(); i++) {

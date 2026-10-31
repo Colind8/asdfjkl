@@ -7,16 +7,14 @@ import characters.Character;
  */
 public abstract class Effect {
 	private String name;
-	protected String desc;
+	private String desc;
 	private int turn_length;
-	protected Character character;
 
 	/**
 	 * Creates an Effect
 	 * @param name The name of the Effect
 	 * @param desc The effect's description
 	 * @param turn_length How many turns the effect lasts
-	 * @param character What character is assigned to the effect
 	 */
 	public Effect (String name, String desc, int turn_length) {
 		this.name = name;
@@ -62,7 +60,7 @@ public abstract class Effect {
 
 	/**
 	 * Changes the turn length by the amount. Usually -1 per turn, increasing if the effect is re-applied in some way.
-	 * @param amount
+	 * @param amount amount to change length by
 	 */
 	public void change_length(int amount) {
 		turn_length += amount;

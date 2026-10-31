@@ -20,9 +20,9 @@ public class HealingEffect extends Effect {
 		this.hp_per_turn = hp_per_turn;
 	}
 
-	/**	
-	 * Changes the character's HP by the amount specified.
-	 * @see effects.Effect#activate_effect()
+	/**	(non-Javadoc)
+	 * 
+	 * @see effects.Effect#activate_effect(characters.Character)
 	 */
 	@Override
 	public void activate_effect(Character character) {
@@ -36,7 +36,7 @@ public class HealingEffect extends Effect {
 	 */
 	@Override
 	public String get_effect_info() {
-		return desc + " for " + hp_per_turn + "hp";
+		return get_desc() + " for " + hp_per_turn + "hp";
 	}
 
 	

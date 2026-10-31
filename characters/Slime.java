@@ -1,5 +1,9 @@
 package characters;
 
+/**
+ * 
+ * Slime enemy
+ */
 public class Slime extends Enemy {
 	/**
 	 * Creates the enemy
@@ -14,6 +18,10 @@ public class Slime extends Enemy {
 		super(name, desc, _a, _b, xp, lv);
 	}
 
+	/**	(non-Javadoc)
+	 * Apply attack
+	 * @see characters.Enemy#attack(characters.Character)
+	 */
 	public void attack(Character character) {
 		character.change_hp(-get_dmg());
 		System.out.println(character.get_name() + " slimed for " + get_dmg() + " damage!");

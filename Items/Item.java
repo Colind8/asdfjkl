@@ -1,6 +1,10 @@
 package items;
 import effects.*;
 
+/**
+ * 
+ * Holds info about an item
+ */
 public class Item {
 	private String name;
 	private String desc;
@@ -9,10 +13,10 @@ public class Item {
 	
 	/**
 	 * Construct new item
-	 * @param name
-	 * @param desc
-	 * @param amount
-	 * @param effect
+	 * @param name name of the item
+	 * @param desc description of the item
+	 * @param amount amount of the item
+	 * @param effect effect object the item applies
 	 */
 	public Item(String name, String desc, int amount, Effect effect) {
 		this.name = name;
@@ -63,7 +67,7 @@ public class Item {
 
 	/**
 	 * Changes the amount of the item by a specific amount
-	 * @param amount
+	 * @param amount amount to change amount by
 	 */
 	public void change_amount(int amount) {
 		this.amount += amount;

@@ -19,6 +19,7 @@ public class Inventory {
 
 	/**
 	 * Returns a list of every item as a string
+	 * @return string
 	 */
 	public String print_inventory() {
 		String str = "";
@@ -42,7 +43,7 @@ public class Inventory {
 
 	/**
 	 * Add a new item to the inventory
-	 * @param item
+	 * @param item item object
 	 */
 	public void add_item(Item item) {
 		if (inventory.size() < max_space) {
@@ -70,8 +71,8 @@ public class Inventory {
 	}
 
 	/**
-	 * Check if an item at the index has its amount at <=0, if so remove it
-	 * @param index
+	 * Check if an item at the index has its amount at 0, if so remove it
+	 * @param index index of item
 	 */
 	public void check_empty(int index) {
 		if (get_item(index).get_amount() <= 0) {

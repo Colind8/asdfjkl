@@ -45,6 +45,10 @@ public class Character {
 		return name;
 	}
 
+	/**
+	 * get the description of the character
+	 * @return description
+	 */
 	public String get_desc() {
 		return desc;
 	}
@@ -116,10 +120,19 @@ public class Character {
 		return dex;
 	}
 
+	/**
+	 * Returns the amount of effects applied to character
+	 * @return int
+	 */
 	public int get_effects_size() {
 		return effects.size();
 	}
 
+	/**
+	 * return effect object from index
+	 * @param index index of effect
+	 * @return Effect
+	 */
 	public Effect get_effect(int index) {
 		return effects.get(index);
 	}
@@ -142,7 +155,7 @@ public class Character {
 
 	/**
 	 * Changes HP by this amount.
-	 * @param amount
+	 * @param amount to change hp by
 	 */
 	public void change_hp(int amount) {
 		hp += amount;
@@ -150,7 +163,7 @@ public class Character {
 
 	/**
 	 * Changes Defense by this amount.
-	 * @param amount
+	 * @param amount to change defense by
 	 */
 	public void change_df(int amount) {
 		df += amount;
@@ -158,7 +171,7 @@ public class Character {
 
 	/**
 	 * Adds the provided effect to the character's active effects.
-	 * @param effect
+	 * @param effect effect object
 	 */
 	public void add_effect(Effect effect) {
 		boolean effect_exists = false;
@@ -187,6 +200,7 @@ public class Character {
 
 	/**
 	 * Activates all effects at once. Returns strings for display.
+	 * @return string
 	 */
 	public String run_effects() {
 		String str = "";

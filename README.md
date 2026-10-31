@@ -18,3 +18,20 @@ When you create a potion, you can throw it at either yourself or your enemies.
 The effect of the potion will activate when their turn starts. (for now potions just change HP).
 
 Use check to view you or your enemy's health, description, and applied effects.
+
+## Completed features
+- Battle system
+- Inventory system
+- Potion brewing
+- Enemy implementation
+- Status effects
+
+## Known limitations
+Game not throughly tested, mostly end conditions.
+
+## Planned features
+- Explorable world (on a linear path)
+- Shop system
+- Finding ingredients in the wild
+- Upgrades
+- Limits for potion brewing

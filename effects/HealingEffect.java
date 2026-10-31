@@ -13,11 +13,10 @@ public class HealingEffect extends Effect {
 	 * @param name The name of the effect
 	 * @param desc The effect's description
 	 * @param turn_length How many turns the effect lasts
-	 * @param character What character is assigned to the effect
 	 * @param hp_per_turn The amount of hp to change to the character per turn
 	 */
-	public HealingEffect(String name, String desc, int turn_length, Character character, int hp_per_turn) {
-		super(name,desc,turn_length,character);
+	public HealingEffect(String name, String desc, int turn_length, int hp_per_turn) {
+		super(name,desc,turn_length);
 		this.hp_per_turn = hp_per_turn;
 	}
 

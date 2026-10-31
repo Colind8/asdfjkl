@@ -56,6 +56,7 @@ public class Menu {
 	 */
 	public void battle_brew_menu(Battle battle) {
 		boolean valid = false;
+		Brew potion = new Brew(battle.get_data().get_inventory());
 		System.out.println("1. Add ingredient\n2. Remove Ingredient\n3. Finish Potion\n4. Cancel");
 		String input = "";
 		while(valid == false) {
@@ -66,6 +67,7 @@ public class Menu {
 					break;
 				case "2":
 					battle_check_menu(battle);
+					break;
 			}
 		}
 	}

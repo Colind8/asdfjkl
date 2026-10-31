@@ -153,7 +153,16 @@ public class Character {
 	 * @param effect
 	 */
 	public void add_effect(Effect effect) {
-		effects.add(effect);
+		boolean effect_exists = false;
+		for (int i = 0; i < effects.size(); i++) {
+			if (effects.get(i).get_name() == effect.get_name()) {
+				effects.get(i).change_length(effect.get_turn_length());
+				effect_exists = true;
+			}
+		}
+		if (!effect_exists) {
+			effects.add(effect);
+		}
 	}
 
 	/**

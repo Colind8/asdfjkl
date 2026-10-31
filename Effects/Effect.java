@@ -18,11 +18,10 @@ public abstract class Effect {
 	 * @param turn_length How many turns the effect lasts
 	 * @param character What character is assigned to the effect
 	 */
-	public Effect (String name, String desc, int turn_length, Character character) {
+	public Effect (String name, String desc, int turn_length) {
 		this.name = name;
 		this.desc = desc;
 		this.turn_length = turn_length;
-		this.character = character;
 	}
 
 	/**

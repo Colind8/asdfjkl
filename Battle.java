@@ -60,7 +60,7 @@ public class Battle {
 	}
 
 	public String get_player_info() {
-		return player.get_name() + " --- " + player.get_hp() + "/" + player.get_max_hp() + "hp -" + player.get_xp()
+		return player.get_name() + " --- " + player.get_hp() + "/" + player.get_max_hp() + "hp";
 	}
 
 	/** 

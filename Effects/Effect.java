@@ -7,7 +7,7 @@ import characters.Character;
  */
 public abstract class Effect {
 	private String name;
-	private String desc;
+	protected String desc;
 	private int turn_length;
 	protected Character character;
 
@@ -26,8 +26,15 @@ public abstract class Effect {
 
 	/**
 	 * Runs whenever it's time to activate the effect.
+	 * @param character to apply effect to
 	 */
 	public abstract void activate_effect(Character character);
+
+	/**
+	 * Displays information on what the effect did.
+	 * @return string
+	 */
+	public abstract String get_effect_info();
 
 	/**
 	 * The name of the effect.

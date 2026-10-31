@@ -70,7 +70,8 @@ public class Menu {
 				case "2":
 					break;
 				case "3":
-
+					battle_brew_finish(battle, potion);
+					valid = true;
 					break;
 				case "4":
 					battle_player_menu(battle);
@@ -80,6 +81,11 @@ public class Menu {
 		}
 	}
 
+	/**
+	 * Menu for adding an ingredient to the potion
+	 * @param battle
+	 * @param potion
+	 */
 	public void battle_brew_add(Battle battle, Brew potion) {
 		int input = -1;
 		boolean valid = false;
@@ -94,10 +100,116 @@ public class Menu {
 				valid = true;
 			}
 		}
+		scnr.nextLine();
 		battle_brew_menu(battle, potion);
 	}
 
-	public void battle_check_menu(Battle battle) {
+	/**
+	 * Menu for choosing who to apply the potion to
+	 * @param battle
+	 * @param potion
+	 */
+	public void battle_brew_finish(Battle battle, Brew potion) {
+		int input = -1;
+		boolean valid = false;
+		while(valid == false) {
+			System.out.println(battle.get_battle_character_list());
+			System.out.println("Enter the id of the character you want to throw the potion on.");
+			input = scnr.nextInt();
+			if ((input >= 1) && (input < battle.get_enemy_count() + 1)) {
+				potion.apply(battle.get_enemy(input - 1));
+				valid = true;
+			} else if (input == 0) {
+				potion.apply(battle.get_player());
+				valid = true;
+			}
+		}
+		scnr.nextLine();
+		battle.end_turn();
+	}
 
+	/**
+	 * Show the check menu
+	 * @param battle
+	*/
+	public void battle_check_menu(Battle battle) {
+		int input = -1;
+		boolean valid = false;
+		while(valid == false) {
+			System.out.println(battle.get_battle_character_list());
+			System.out.println("Enter the id of the character you want to view the statistics of.");
+			input = scnr.nextInt();
+			if ((input >= 1) && (input < battle.get_enemy_count() + 1)) {
+				System.out.println(battle.get_enemy_status(input - 1));
+				valid = true;
+			} else if (input == 0) {
+				System.out.println(battle.get_player_status());
+				valid = true;
+			}
+		}
+		scnr.nextLine();
+		battle_player_menu(battle);
+	}
+
+	/**
+	 * Display the start of the enemy's turn
+	 * @param enemy Enemy name string
+	 */
+	public void battle_enemy_ready(String enemy) {
+		System.out.println(enemy + "'s turn!");
+		scnr.nextLine();
+	}
+
+	/**
+	 * Display effects applied to enemy
+	 * @param str effects
+	 */
+	public void battle_enemy_effect(String str) {
+		System.out.println(str);
+	}
+
+	/**
+	 * Display enemy attack / damage
+	 * @param enemy Enemy name
+	 * @param dmg Enemy damage
+	 */
+	public void battle_enemy_attack(String enemy, int dmg) {
+		System.out.println(enemy + " dealt " + dmg + " damage.");
+		scnr.nextLine();
+	}
+
+	/**
+	 * Display start of player's turn
+	 * @param player name
+	 */
+	public void battle_player_ready(String player) {
+		System.out.println(player + "'s turn!");
+		scnr.nextLine();
+	}
+
+	/**
+	 * Display effects applied to player
+	 * @param str effects
+	 */
+	public void battle_player_effect(String str) {
+		System.out.println(str);
+	}
+
+	/**
+	 * End the battle, showing the player victorious
+	 * @param player name
+	 */
+	public void battle_over_playerwins(String player) {
+		System.out.println("Battle complete! " + player + " wins!");
+		scnr.nextLine();
+	}
+
+	/**
+	 * End the battle, showing the player lost
+	 * @param player name
+	 */
+	public void battle_over_playerloses(String player) {
+		System.out.println("Battle over. " + player + " has died!");
+		scnr.nextLine();
 	}
 }

@@ -26,9 +26,17 @@ public class HealingEffect extends Effect {
 	 */
 	@Override
 	public void activate_effect(Character character) {
-		System.out.println("Healing!");
 		character.change_hp(hp_per_turn);
 		change_length(-1);
+	}
+
+	/**
+	 * Displays information on what the effect did.
+	 * @return string
+	 */
+	@Override
+	public String get_effect_info() {
+		return desc + " for " + hp_per_turn + "hp";
 	}
 
 	

@@ -116,6 +116,14 @@ public class Character {
 		return dex;
 	}
 
+	public int get_effects_size() {
+		return effects.size();
+	}
+
+	public Effect get_effect(int index) {
+		return effects.get(index);
+	}
+
 	/**
 	 * Set the damage using a formula (base )
 	 * @param base Amount of damage when at level zero
@@ -178,11 +186,13 @@ public class Character {
 	}
 
 	/**
-	 * Activates all effects at once
+	 * Activates all effects at once. Returns strings for display.
 	 */
-	public void run_effects() {
+	public String run_effects() {
+		String str = "";
 		for (int i = 0; i < effects.size(); i++) {
 			effects.get(i).activate_effect(this);
+			str += effects.get(i).get_effect_info() + "\n";
 		}
 		for (int i = 0; i < effects.size(); i++) {
 			if (effects.get(i).get_turn_length() <= 0) {
@@ -190,5 +200,6 @@ public class Character {
 				i = 0;
 			}
 		}
+		return str;
 	}
 }

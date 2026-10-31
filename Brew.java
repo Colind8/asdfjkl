@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import effects.*;
-
+import characters.Character;
 import items.*;
 
 /**
@@ -55,8 +55,17 @@ public class Brew {
 	 * @param index of the ingredient
 	 * @return Effect
 	 */
-	public Effect get_ingredient(int index) {
+	public Effect get_effect(int index) {
 		return ingredients.get(index).get_effect();
+	}
+
+	/**
+	 * Returns the ingredient at the index' name
+	 * @param index
+	 * @return item name
+	 */
+	public String get_ingredient_name(int index) {
+		return ingredients.get(index).get_name();
 	}
 
 	/**
@@ -76,7 +85,7 @@ public class Brew {
 			return "[No ingredients added yet]";
 		}
 		for (int i = 0; i < get_ingredients_size(); i++) {
-			str += get_ingredient(i).get_name();
+			str += get_ingredient_name(i);
 			if (i != get_ingredients_size() - 1) {
 				str += ", ";
 			}
@@ -94,9 +103,19 @@ public class Brew {
 			return "[No ingredients added yet]";
 		}
 		for (int i = 0; i < get_ingredients_size(); i++) {
-			str += i + ". " + get_ingredient(i).get_name();
+			str += i + ". " + get_ingredient_name(i);
 			str += "\n";
 		}
 		return str;
+	}
+
+	/**
+	 * Add all the effects of the potion to the character
+	 * @param character
+	 */
+	public void apply(Character character) {
+		for (int i = 0; i < ingredients.size(); i++) {
+			character.add_effect(get_effect(i));
+		}
 	}
 }

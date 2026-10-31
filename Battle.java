@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 import characters.*;
-import items.Item;
+//import items.Item;
 
 /**
  * Controls the battle logic. After being initialized, enemies must be added with add_enemy().
@@ -51,6 +51,10 @@ public class Battle {
 		return enemies.get(index);
 	}
 
+	public PlayerCharacter get_player() {
+		return player;
+	}
+
 	/**
 	 * Returns data object
 	 * @return data
@@ -74,10 +78,12 @@ public class Battle {
 	 * Ends a turn
 	 */
 	public void end_turn() {
+		System.out.println("turn_index: " + turn_index);
 		if (is_all_enemies_dead()) {
 			end_battle();
-		}
-		if (turn_index > enemies.size() + 1) {
+		} else if (player.get_hp() <= 0) {
+			end_battle();
+		} else if (turn_index == enemies.size()) {
 			turns++;
 			turn_index = 0;
 			start_player_turn();
@@ -98,7 +104,15 @@ public class Battle {
 	 * Begins the turn of whoever is next.
 	 */
 	public void start_enemy_turn() {
-		if (is_enemy_dead(turn_index + 1)) {
+		if (is_enemy_dead(turn_index - 1)) {
+			end_turn();
+		} else {
+			Enemy enemy = get_enemy(turn_index - 1);
+			player.change_hp(-(enemy.get_dmg()));
+			menu.battle_enemy_ready(enemy.get_name());
+			String effects_ran = enemy.run_effects();
+			menu.battle_enemy_effect(effects_ran);
+			menu.battle_enemy_attack(enemy.get_name(), enemy.get_dmg());
 			end_turn();
 		}
 	}
@@ -107,17 +121,28 @@ public class Battle {
 	 * Begins the player's turn
 	 */
 	public void start_player_turn() {
+		menu.battle_player_ready(player.get_name());
+		String effects_ran = player.run_effects();
+		menu.battle_player_effect(effects_ran);
 		menu.battle_player_menu(this);
 	}
 
+	/**
+	 * Begin brewing
+	 */
 	public void begin_brew() {
 		Brew potion = new Brew(get_data().get_inventory());
 		menu.battle_brew_menu(this, potion);
+		
 	}
 
 	/** Ends the battle */
 	public void end_battle() {
-
+		if (player.get_hp() <= 0) {
+			menu.battle_over_playerloses(player.get_name());
+		} else {
+			menu.battle_over_playerwins(player.get_name());
+		}
 	}
 
 	/**
@@ -142,5 +167,53 @@ public class Battle {
 			}
 		}
 		return check;
+	}
+
+	/**
+	 * Returns a list of all characters participating in battle.
+	 * @return String
+	 */
+	public String get_battle_character_list() {
+		String str = "";
+		str += "0. " + player.get_name() + " [" + player.get_hp() + "/" + player.get_max_hp() + "hp]\n";
+		for(int i = 1; i < enemies.size() + 1; i++) {
+			str += i + ". " + enemies.get(i - 1).get_name() + " [" + enemies.get(i - 1).get_hp() + "/" + enemies.get(i - 1).get_max_hp() + "hp]\n";
+		}
+		return str;
+	}
+
+	/**
+	 * Returns enemy statistics
+	 * @param index
+	 * @return string
+	 */
+	public String get_enemy_status(int index) {
+		String str = "";
+		str += enemies.get(index).get_name() + "\n";
+		str += enemies.get(index).get_desc() + "\n\n";
+		str += enemies.get(index).get_dmg() + " damage\n";
+		str += enemies.get(index).get_hp() + "/" + enemies.get(index).get_max_hp() + " hp\n\n";
+		str += "Current effects: \n";
+		for (int i = 0; i < enemies.get(index).get_effects_size(); i++) {
+			str += enemies.get(index).get_effect(i).get_effect_info() + "\n";
+		}
+		return str;
+	}
+
+	/**
+	 * Return player statistics
+	 * @return string
+	 */
+	public String get_player_status() {
+		String str = "";
+		str += player.get_name() + "\n";
+		str += player.get_desc() + "\n\n";
+		str += player.get_dmg() + " damage\n";
+		str += player.get_hp() + "/" + player.get_max_hp() + " hp\n\n";
+		str += "Current effects: \n";
+		for (int i = 0; i < player.get_effects_size(); i++) {
+			str += player.get_effect(i).get_effect_info() + "\n";
+		}
+		return str;
 	}
 }
